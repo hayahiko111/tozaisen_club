@@ -1,0 +1,20 @@
+<div class="container">
+  <h1>会員情報編集</h1>
+  <%= form_with model: @user, url: users_path, method: :patch do |f| %>
+  <table>
+    <tr>
+      <td><%= f.label :name, "名前" %></td>
+      <td><%= f.text_field :name %></td>
+    </tr>
+    <tr>
+      <td><%= f.label :email, "メールアドレス" %></td>
+      <td><%= f.email_field :email, autofocus: true, autocomplete: "email" %></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><%= f.submit '編集内容を保存', class:"btn btn-success" %></td>
+      <td></td>
+    </tr>
+  </table>
+  <% end %>
+</div>

@@ -1,0 +1,28 @@
+<div class="container">
+  <h3>駅一覧・追加</h3>
+  <div class="station_form">
+  <%= form_with model: @station, url:admin_stations_path do |f| %>
+    <%= f.label '駅名', class:"col-lg-2" %>
+    <%= f.text_field :name, class:"col-lg-2" %>
+    <%= f.submit '新規登録', class:"btn btn-success col-lg-1" %>
+  <% end %>
+  </div>
+
+  <table class="table col-lg-4">
+    <thead class="table-active">
+      <tr>
+        <th>駅</th>
+        <th></th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @stations.each do |station| %>
+      <tr>
+        <td><%= station.name %></td>
+        <td><%= link_to "編集する", edit_admin_station_path(station.id), class:"btn btn-success" %></td>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

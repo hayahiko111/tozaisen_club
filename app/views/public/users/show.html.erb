@@ -1,0 +1,18 @@
+<div class="container customer_show">
+  <h1>マイページ</h1>
+  <h3>登録情報</h3>
+  <%= link_to "編集する", edit_users_path, class:"btn btn-success align-self-center" %>
+  <div class="d-flex">
+  <table class="table table-bordered col-lg-8">
+    <tr>
+      <td class="col-lg-4 table-active">名前</td>
+      <td class="col-lg-8"><%= @user.name %></td>
+    </tr>
+    <tr>
+      <td class="table-active">メールアドレス</td>
+      <td><%= @user.email %></td>
+    </tr>
+  </table>
+  </div>
+  <div class="col-lg-4"></div>
+</div>

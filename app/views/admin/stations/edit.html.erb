@@ -1,0 +1,8 @@
+<div class="container admin_station_edit">
+ <h3>駅名編集</h3>
+ <%= form_with model: @station, url:admin_station_path(@station.id), method: :patch do |f| %>
+  <%= f.label '駅名', class:"col-lg-2" %>
+  <%= f.text_field :name, class:"col-lg-2" %>
+  <%= f.submit '変更を保存', class:"btn btn-success"  %>
+ <% end %>
+</div>
