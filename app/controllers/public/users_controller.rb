@@ -1,6 +1,7 @@
 class Public::UsersController < ApplicationController
   def show
     @user = current_user
+    @my_posts = Post.where(user_id: current_user.id).order(id: "DESC")
   end
 
   def edit

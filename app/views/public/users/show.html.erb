@@ -1,5 +1,5 @@
 <div class="container customer_show">
-  <h1>マイページ</h1>
+  <h2>マイページ</h2>
   <h3>登録情報</h3>
   <%= link_to "編集する", edit_users_path, class:"btn btn-success align-self-center" %>
   <div class="d-flex">
@@ -15,4 +15,22 @@
   </table>
   </div>
   <div class="col-lg-4"></div>
+  <h3>自分の投稿</h3>
+  <table>
+    <% @my_posts.each do |post| %>
+    <tr>
+      <td>
+        <% if post.image.attached? %>
+          <%= image_tag post.image, size: "600x400" %>
+        <% else %>
+          <%= image_tag 'no_image', size: "200x200" %>
+        <% end %>
+      </td>
+      <td><%= post.genre.name %></td>
+      <td><%= post.message %></td>
+      <td><%= link_to "編集する", edit_post_path(post.id), class:"btn btn-success" %></td>
+      <td><%= link_to "削除する", post_path(post.id), method: :delete, data: {confirm: "削除しますか？"}, class:"btn btn-danger" %></td>
+    </tr>
+    <% end %>
+  </table>
 </div>

@@ -1,9 +1,12 @@
 Rails.application.routes.draw do
-  namespace :public do
-    get 'posts/index'
-    get 'posts/new'
-    get 'posts/edit'
+  scope module: :public do
+    resources :stations, only: [:index, :show]
   end
+
+  scope module: :public do
+    resources :posts, except: [:show, :index]
+  end
+
   scope module: :public do
     get "users/current_user" => "users#show"
     patch "users/withdraw" => "users#withdraw"
@@ -18,7 +21,7 @@ Rails.application.routes.draw do
   end
 
   namespace :admin do
-    resources :stations, only:[:new, :create, :index, :edit, :update]
+    resources :stations, except: [:show, :destroy]
   end
 
   devise_for :user,skip: [:passwords], controllers: {
