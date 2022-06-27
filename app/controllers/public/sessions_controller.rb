@@ -28,7 +28,7 @@ class Public::SessionsController < Devise::SessionsController
 
   protected
   # 退会しているかを判断するメソッド
-  def customer_state
+  def user_state
     ## 【処理内容1】 入力されたemailからアカウントを1件取得
     @user = User.find_by(email: params[:user][:email])
     ## アカウントを取得できなかった場合、このメソッドを終了する
