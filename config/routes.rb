@@ -4,7 +4,8 @@ Rails.application.routes.draw do
   end
 
   scope module: :public do
-    resources :posts, except: [:show, :index] do
+    resources :posts, except: [:index] do
+      resource :favorites, only: [:create, :destroy]
       resources :post_comments, only: [:create, :destroy]
     end
   end
