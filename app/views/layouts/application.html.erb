@@ -28,9 +28,6 @@
             <%= link_to "マイページ", users_current_user_path %>
           </div>
           <div>
-            <%= link_to "駅一覧", stations_path %>
-          </div>
-          <div>
             <%= link_to "投稿する", new_post_path %>
           </div>
           <div>
@@ -44,8 +41,8 @@
             <%= link_to "ログイン", new_user_session_path %>
           </div>
         <% end %>
-        <%= yield %>
       </div>
     </header>
+    <%= yield %>
   </body>
 </html>

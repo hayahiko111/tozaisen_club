@@ -1,18 +1,42 @@
-<div class="container">
-  <h3>投稿編集</h3>
-  <%= form_with model: @post do |f| %>
-    <%= f.label :image, "画像" %>
-    <%= f.file_field :image, accept: "image/*" %>
+<div class="container d-flex">
+  <div class="sidebar col-lg-2">
+    <p><%= link_to "人気投稿", popular_path %></p>
+    <h4>駅一覧</h4>
+    <table class="table">
+      <thead class="table-active">
+        <tr>
+          <th>駅</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @stations.each do |station| %>
+        <tr>
+          <td>
+            <%= link_to station_path(station.id) do %>
+              <%= station.name %>
+            <% end %>
+          </td>
+        </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+  <div>
+    <h3>投稿編集</h3>
+    <%= form_with model: @post do |f| %>
+      <%= f.label :image, "画像" %>
+      <%= f.file_field :image, accept: "image/*" %>
 
-    <%= f.label :genre_id, "ジャンル" %>
-    <%= f.select :genre_id, @genres.map{ |genre| [genre.name, genre.id]}, { include_blank: '-- 選択してください --'} %>
+      <%= f.label :genre_id, "ジャンル" %>
+      <%= f.select :genre_id, @genres.map{ |genre| [genre.name, genre.id]}, { include_blank: '-- 選択してください --'} %>
 
-    <%= f.label :station_id, "最寄駅" %>
-    <%= f.select :station_id, @stations.map{ |station| [station.name, station.id]}, { include_blank: '-- 選択してください --'} %>
+      <%= f.label :station_id, "最寄駅" %>
+      <%= f.select :station_id, @stations.map{ |station| [station.name, station.id]}, { include_blank: '-- 選択してください --'} %>
 
-    <%= f.label :message, "メッセージ" %>
-    <%= f.text_area :message %>
+      <%= f.label :message, "メッセージ" %>
+      <%= f.text_area :message %>
 
-    <%= f.submit "投稿" %>
-  <% end %>
+      <%= f.submit "投稿" %>
+    <% end %>
+  </div>
 </div>

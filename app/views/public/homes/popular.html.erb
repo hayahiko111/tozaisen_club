@@ -1,3 +1,36 @@
-<div class="container">
-  
+<div class="container d-flex">
+  <div class="sidebar col-lg-2">
+    <p><%= link_to "人気投稿", popular_path %></p>
+    <h4>駅一覧</h4>
+    <table class="table">
+      <thead class="table-active">
+        <tr>
+          <th>駅</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @stations.each do |station| %>
+        <tr>
+          <td>
+            <%= link_to station_path(station.id) do %>
+              <%= station.name %>
+            <% end %>
+          </td>
+        </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+  <div>
+    <h3>人気投稿</h3>
+    <% @favorite_top4.each do |favorite| %>
+      <%= image_tag favorite.image, size: "400x250" %>
+      <%= favorite.station.name %>
+      <%= favorite.genre.name %>
+      <%= favorite.user.name %>
+      <%= favorite.message %>
+      <%= "♥" + favorite.favorites.count.to_s %>
+      <%= "コメント件数：" + favorite.post_comments.count.to_s %>
+    <% end %>
+  </div>
 </div>

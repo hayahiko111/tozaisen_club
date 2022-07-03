@@ -17,11 +17,13 @@ class Public::PostsController < ApplicationController
   def show
     @post = Post.find(params[:id])
     @post_comment = PostComment.new
+    @stations = Station.all
   end
 
   def edit
     @post = Post.find(params[:id])
     @genres = Genre.all
+    @stations = Station.all
     @stations = Station.all
   end
 

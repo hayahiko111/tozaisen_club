@@ -1,22 +1,46 @@
-<div class="container">
-  <h3><%= @station.name + "駅" %></h3>
-  <table>
-  <% @posts.each do |post| %>
-    <tr>
-      <td>
-        <% if post.image.attached? %>
-          <%= link_to post_path(post.id) do %>
-            <%= image_tag post.image, size: "500x300" %>
-          <% end %>
-        <% else %>
-          <%= image_tag 'no_image', size: "200x200" %>
+<div class="container d-flex">
+  <div class="sidebar col-lg-2">
+    <p><%= link_to "人気投稿", popular_path %></p>
+    <h4>駅一覧</h4>
+    <table class="table">
+      <thead class="table-active">
+        <tr>
+          <th>駅</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @stations.each do |station| %>
+        <tr>
+          <td>
+            <%= link_to station_path(station.id) do %>
+              <%= station.name %>
+            <% end %>
+          </td>
+        </tr>
         <% end %>
-        </td>
-      <td><%= post.genre.name %></td>
-      <td><%= post.user.name %></td>
-      <td><%= "コメント件数：" + post.post_comments.count.to_s %></td>
-      <td><%= post.message %></td>
-    </tr>
-  <% end %>
-  </table>
+      </tbody>
+    </table>
+  </div>
+  <div>
+    <h3><%= @station.name + "駅" %></h3>
+    <table>
+    <% @posts.each do |post| %>
+      <tr>
+        <td>
+          <% if post.image.attached? %>
+            <%= link_to post_path(post.id) do %>
+              <%= image_tag post.image, size: "500x300" %>
+            <% end %>
+          <% else %>
+            <%= image_tag 'no_image', size: "200x200" %>
+          <% end %>
+          </td>
+        <td><%= post.genre.name %></td>
+        <td><%= post.user.name %></td>
+        <td><%= "コメント件数：" + post.post_comments.count.to_s %></td>
+        <td><%= post.message %></td>
+      </tr>
+    <% end %>
+    </table>
+  </div>
 </div>

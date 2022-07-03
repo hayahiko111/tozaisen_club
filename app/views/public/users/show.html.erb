@@ -1,38 +1,63 @@
-<div class="container customer_show">
-  <h2>マイページ</h2>
-  <h3>登録情報</h3>
-  <%= link_to "編集する", edit_users_path, class:"btn btn-success align-self-center" %>
-  <div class="d-flex">
-  <table class="table table-bordered col-lg-8">
-    <tr>
-      <td class="col-lg-4 table-active">名前</td>
-      <td class="col-lg-8"><%= @user.name %></td>
-    </tr>
-    <tr>
-      <td class="table-active">メールアドレス</td>
-      <td><%= @user.email %></td>
-    </tr>
-  </table>
-  </div>
-  <div class="col-lg-4">
-    <%= link_to "退会する", users_withdraw_path, method: :patch, class:"btn btn-danger withdraw" ,"data-confirm" => "本当に削除しますか？" %>
-  </div>
-  <h3>自分の投稿</h3>
-  <table>
-    <% @my_posts.each do |post| %>
-    <tr>
-      <td>
-        <% if post.image.attached? %>
-          <%= image_tag post.image, size: "600x400" %>
-        <% else %>
-          <%= image_tag 'no_image', size: "200x200" %>
+<div class="container d-flex">
+  <div class="sidebar col-lg-2">
+    <p><%= link_to "人気投稿", popular_path %></p>
+    <h4>駅一覧</h4>
+    <table class="table">
+      <thead class="table-active">
+        <tr>
+          <th>駅</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @stations.each do |station| %>
+        <tr>
+          <td>
+            <%= link_to station_path(station.id) do %>
+              <%= station.name %>
+            <% end %>
+          </td>
+        </tr>
         <% end %>
-      </td>
-      <td><%= post.genre.name %></td>
-      <td><%= post.message %></td>
-      <td><%= link_to "編集する", edit_post_path(post.id), class:"btn btn-success" %></td>
-      <td><%= link_to "削除する", post_path(post.id), method: :delete, data: {confirm: "削除しますか？"}, class:"btn btn-danger" %></td>
-    </tr>
-    <% end %>
-  </table>
+      </tbody>
+    </table>
+  </div>
+  <div class="col-lg-10">
+    <p class = "notice"><%= notice %></p>
+    <h2>マイページ</h2>
+    <h3>登録情報</h3>
+    <%= link_to "編集する", edit_users_path, class:"btn btn-success align-self-center" %>
+    <div>
+      <table class="table table-bordered col-lg-8">
+        <tr>
+          <td class="col-lg-2 table-active">名前</td>
+          <td class="col-lg-5"><%= @user.name %></td>
+        </tr>
+        <tr>
+          <td class="table-active">メールアドレス</td>
+          <td><%= @user.email %></td>
+        </tr>
+      </table>
+    </div>
+    <div>
+      <%= link_to "退会する", users_withdraw_path, method: :patch, class:"btn btn-danger withdraw" ,"data-confirm" => "本当に削除しますか？" %>
+    </div>
+    <h3>自分の投稿</h3>
+    <table>
+      <% @my_posts.each do |post| %>
+      <tr>
+        <td>
+          <% if post.image.attached? %>
+            <%= image_tag post.image, size: "600x400" %>
+          <% else %>
+            <%= image_tag 'no_image', size: "200x200" %>
+          <% end %>
+        </td>
+        <td><%= post.genre.name %></td>
+        <td><%= post.message %></td>
+        <td><%= link_to "編集する", edit_post_path(post.id), class:"btn btn-success" %></td>
+        <td><%= link_to "削除する", post_path(post.id), method: :delete, data: {confirm: "削除しますか？"}, class:"btn btn-danger" %></td>
+      </tr>
+      <% end %>
+    </table>
+  </div>
 </div>
