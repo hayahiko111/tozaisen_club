@@ -19,6 +19,7 @@ Rails.application.routes.draw do
 
   root to: "public/homes#top"
   get "popular" => "public/homes#popular"
+  get "search" => "public/homes#word_search"
 
   namespace :admin do
     resources :genres, only: [:index, :edit, :create, :update]

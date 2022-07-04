@@ -28,16 +28,21 @@
     </table>
   </div>
   <div>
+  <div>
     <p class = "notice"><%= notice %></p>
-    <h3>人気投稿</h3>
-    <% @favorite_top4.each do |favorite| %>
-      <%= image_tag favorite.image, size: "400x250" %>
-      <%= favorite.station.name %>
-      <%= favorite.genre.name %>
-      <%= favorite.user.name %>
-      <%= favorite.message %>
-      <%= "♥" + favorite.favorites.count.to_s %>
-      <%= "コメント件数：" + favorite.post_comments.count.to_s %>
+    <% if @keyword == "" %>
+      <h3><%="”" + "”の検索結果" %></h3>
+    <% else %>
+      <h3><%="”" + @keyword + "”の検索結果" %></h3>
+    <% end %>
+    <% @posts.each do |post| %>
+      <%= image_tag post.image, size: "500x300" %>
+      <%= post.station.name %>
+      <%= post.genre.name %>
+      <%= post.message %>
+      <%= post.user.name %>
+      <%= "コメント件数：" + post.post_comments.count.to_s %>
+      <%= "♥" + post.favorites.count.to_s %>
     <% end %>
   </div>
 </div>

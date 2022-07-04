@@ -1,20 +1,52 @@
-<div class="container">
-  <h1>会員情報編集</h1>
-  <%= form_with model: @user, url: users_path, method: :patch do |f| %>
-  <table>
-    <tr>
-      <td><%= f.label :name, "名前" %></td>
-      <td><%= f.text_field :name %></td>
-    </tr>
-    <tr>
-      <td><%= f.label :email, "メールアドレス" %></td>
-      <td><%= f.email_field :email, autofocus: true, autocomplete: "email" %></td>
-    </tr>
-    <tr>
-      <td></td>
-      <td><%= f.submit '編集内容を保存', class:"btn btn-success" %></td>
-      <td></td>
-    </tr>
-  </table>
-  <% end %>
+<div class="container d-flex">
+  <div class="sidebar col-lg-2">
+    <div class="search">
+      <%= form_with url: search_path, method: :get do |f| %>
+        <%= f.text_field :keyword, value: @keyword %>
+        <%= f.submit "検索", class: "btn btn-primary" %>
+      <% end %>
+    </div>
+    <p><%= link_to "人気投稿", popular_path %></p>
+    <h4>駅一覧</h4>
+    <table class="table">
+      <thead class="table-active">
+        <tr>
+          <th>駅</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @stations.each do |station| %>
+        <tr>
+          <td>
+            <%= link_to station_path(station.id) do %>
+              <%= station.name %>
+            <% end %>
+          </td>
+        </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+  <div>
+  <div>
+    <p class = "notice"><%= notice %></p>
+    <h1>会員情報編集</h1>
+    <%= form_with model: @user, url: users_path, method: :patch do |f| %>
+    <table>
+      <tr>
+        <td><%= f.label :name, "名前" %></td>
+        <td><%= f.text_field :name %></td>
+      </tr>
+      <tr>
+        <td><%= f.label :email, "メールアドレス" %></td>
+        <td><%= f.email_field :email, autofocus: true, autocomplete: "email" %></td>
+      </tr>
+      <tr>
+        <td></td>
+        <td><%= f.submit '編集内容を保存', class:"btn btn-success" %></td>
+        <td></td>
+      </tr>
+    </table>
+    <% end %>
+  </div>
 </div>
