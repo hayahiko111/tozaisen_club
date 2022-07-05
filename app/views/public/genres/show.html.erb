@@ -41,22 +41,26 @@
   </div>
   <div>
     <p class = "notice"><%= notice %></p>
-    <h3>新規投稿</h3>
-    <%= form_with model: @post do |f| %>
-      <%= f.label :image, "画像" %>
-      <%= f.file_field :image, accept: "image/*" %>
-
-      <%= f.label :genre_id, "ジャンル" %>
-      <%= f.select :genre_id, @genres.map{ |genre| [genre.name, genre.id]}, { include_blank: '-- 選択してください --'} %>
-
-      <%= f.label :station_id, "最寄駅" %>
-      <%= f.select :station_id, @stations.map{ |station| [station.name, station.id]}, { include_blank: '-- 選択してください --'} %>
-
-      <%= f.label :message, "メッセージ" %>
-      <%= f.text_area :message %>
-
-      <%= f.hidden_field :user_id, :value => current_user.id %>
-      <%= f.submit "投稿" %>
+    <h3><%= "”" + @genre.name + "”" %></h3>
+    <table>
+    <% @posts.each do |post| %>
+      <tr>
+        <td>
+          <% if post.image.attached? %>
+            <%= link_to post_path(post.id) do %>
+              <%= image_tag post.image, size: "500x300" %>
+            <% end %>
+          <% else %>
+            <%= image_tag 'no_image', size: "200x200" %>
+          <% end %>
+        </td>
+        <td><%= post.station.name %></td>
+        <td><%= post.message %></td>
+        <td><%= post.user.name %></td>
+        <td><%= "♥" + post.favorites.count.to_s %></td>
+        <td><%= "コメント件数：" + post.post_comments.count.to_s %></td>
+      </tr>
     <% end %>
+    </table>
   </div>
 </div>

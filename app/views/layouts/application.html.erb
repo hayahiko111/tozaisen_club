@@ -23,6 +23,9 @@
           <div>
             <%= link_to "ジャンル一覧", admin_genres_path %>
           </div>
+          <div>
+            <%= link_to "ユーザー一覧", admin_users_path %>
+          </div>
         <% elsif user_signed_in? %>
           <div>
             <%= link_to "マイページ", users_current_user_path %>

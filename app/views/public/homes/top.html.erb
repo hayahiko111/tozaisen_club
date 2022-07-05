@@ -1,3 +1,13 @@
 <div class="container">
-  <%= link_to 'ゲストログイン（閲覧用）', users_guest_sign_in_path, method: :post %>
+  <div class="top_image">
+    <div class="top_message">
+      <h3>Welcome to 東西線Club ！</h3>
+      <p>普段使っている東西線沿線の魅力をシェアしよう〜</p>
+      <% if admin_signed_in? %>
+      <% elsif user_signed_in? %>
+      <% else %>
+        <%= link_to 'ゲストログイン（閲覧用）', users_guest_sign_in_path, method: :post %>
+      <% end %>
+    </div>
+  </div>
 </div>

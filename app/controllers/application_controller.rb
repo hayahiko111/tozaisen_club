@@ -5,7 +5,7 @@ class ApplicationController < ActionController::Base
     if resource_or_scope.is_a?(Admin)
         admin_stations_path
     else
-        homes_popular_path
+        popular_path
     end
   end
 

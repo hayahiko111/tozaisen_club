@@ -12,11 +12,13 @@ class Public::UsersController < ApplicationController
     @user = current_user
     @my_posts = Post.where(user_id: current_user.id).order(id: "DESC")
     @stations = Station.all
+    @genres = Genre.all
   end
 
   def edit
     @user = current_user
     @stations = Station.all
+    @genres = Genre.all
   end
 
   def update

@@ -1,7 +1,15 @@
 Rails.application.routes.draw do
 
+  namespace :admin do
+    resources :users, only: [:index, :show, :edit, :update]
+  end
+
   scope module: :public do
-    resources :stations, only: [:index, :show]
+    resources :genres, only: [:show]
+  end
+
+  scope module: :public do
+    resources :stations, only: [:show]
   end
 
   scope module: :public do

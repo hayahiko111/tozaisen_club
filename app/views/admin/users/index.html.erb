@@ -1,0 +1,27 @@
+<div class="container">
+  <h3>ユーザー一覧</h3>
+    <table class="table col-lg-10">
+      <thead class="table-active">
+        <tr>
+          <th>name</th>
+          <th>email</th>
+          <th>ステータス</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @users.each do |user| %>
+        <tr>
+          <td><%= user.name %></td>
+          <td><%= user.email %></td>
+        <% if user.is_deleted == false %>
+          <td>有効</td>
+        <% else %>
+          <td>退会</td>
+        <% end %>
+          <td><%= link_to "編集", edit_admin_user_path(user.id) %></td>
+        </tr>
+        <% end %>
+      </tbody>
+    </table>
+</div>

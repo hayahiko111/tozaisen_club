@@ -1,6 +1,24 @@
 <div class="container d-flex">
   <div class="sidebar col-lg-2">
+    <div class="search">
+      <%= form_with url: search_path, method: :get do |f| %>
+        <%= f.text_field :keyword, value: @keyword, style: "width:160px" %>
+        <%= f.submit "検索", class: "btn btn-primary" %>
+      <% end %>
+    </div>
     <p><%= link_to "人気投稿", popular_path %></p>
+    <div class="dropdown">
+      <button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        ジャンル別
+      </button>
+      <div class="dropdown-menu">
+        <% @genres.each do |genre| %>
+          <%= link_to genre_path(genre.id) do %>
+            <p class="dropdown-item"><%= genre.name %></p>
+          <% end %>
+        <% end %>
+      </div>
+    </div>
     <h4>駅一覧</h4>
     <table class="table">
       <thead class="table-active">
@@ -21,11 +39,11 @@
       </tbody>
     </table>
   </div>
-  <div class="col-lg-10">
+  <div>
     <p class = "notice"><%= notice %></p>
     <h2>マイページ</h2>
     <h3>登録情報</h3>
-    <%= link_to "編集する", edit_users_path, class:"btn btn-success align-self-center" %>
+    <%= link_to "編集する", edit_users_path(@user.id), class:"btn btn-success align-self-center" %>
     <div>
       <table class="table table-bordered col-lg-8">
         <tr>

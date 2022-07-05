@@ -27,3 +27,13 @@ li {
 .notice{
   color:#FF0000;
 }
+
+.top_image{
+  width: 60%;
+  height:500px;
+  background-image: url(MARIIMG_0232_TP_V4);
+}
+
+.top_message{
+  background: rgba(255,255,255,0.5);
+}
