@@ -1,0 +1,20 @@
+<div class="container d-flex">
+  <div>
+    <%= image_tag @post.image, size: "700x500" %>
+    <%= @post.station.name %>
+    <%= @post.genre.name %>
+    <%= @post.user.name %>
+    <%= @post.message %>
+    <%= "コメント件数：" + @post.post_comments.count.to_s %>
+    <table>
+      <% @post.post_comments.each do |post_comment| %>
+      <tr>
+        <td><%= post_comment.user.name %></td>
+        <td><%= post_comment.comment %></td>
+        <td><%= link_to "削除する", admin_post_post_comment_path(post_comment.id), method: :delete, class:"btn" %></td>
+      </tr>
+      <% end %>
+    </table>
+    ♥<%= @post.favorites.count %> いいね
+  </div>
+</div>

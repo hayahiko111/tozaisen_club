@@ -20,7 +20,11 @@
   box-sizing: border-box;
 }
 
-li {
+.link{
+  color: #000000;
+}
+
+li{
   list-style: none;
 }
 
@@ -29,11 +33,72 @@ li {
 }
 
 .top_image{
-  width: 60%;
-  height:500px;
+  width: 70%;
+  height:530px;
   background-image: url(MARIIMG_0232_TP_V4);
 }
 
 .top_message{
   background: rgba(255,255,255,0.5);
+}
+
+header{
+  padding: 10px 0 0 0;
+
+}
+
+header .new_user_registration{
+  margin-right: 20px;
+}
+
+.rounded-pill{
+  height: 40px;
+}
+
+.logo{
+  margin-left: 100px;
+}
+
+header h3{
+  margin-top: 35px;
+}
+
+.top_message{
+  padding-top: 1em;
+  padding-left: 2em;
+}
+
+.top_message p{
+  padding-left: 2em;
+}
+
+.guest_sign_in{
+  margin-bottom: 20px;
+}
+
+h5{
+  padding-top: 20px;
+}
+
+.sidebar{
+  background-color: #EEEEEE;
+}
+
+.popular{
+  margin:10px 0 30px 50px;
+}
+
+.popular .popular_station{
+  font-size: 25px;
+  display: inline-block;
+}
+
+.popular_contents{
+  margin-left: 30px;
+  width: 400px;
+  height:250px;
+}
+
+.popular_message{
+  overflow-wrap: break-word;
 }

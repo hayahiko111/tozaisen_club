@@ -11,40 +11,51 @@
   </head>
 
   <body>
-    <header>
-      <div class="container">
-        <% if admin_signed_in? %>
-          <div>
-            <%= link_to "ログアウト", destroy_admin_session_path, method: :delete %>
-          </div>
-          <div>
-            <%= link_to "駅一覧", admin_stations_path %>
-          </div>
-          <div>
-            <%= link_to "ジャンル一覧", admin_genres_path %>
-          </div>
-          <div>
-            <%= link_to "ユーザー一覧", admin_users_path %>
-          </div>
-        <% elsif user_signed_in? %>
-          <div>
-            <%= link_to "マイページ", users_current_user_path %>
-          </div>
-          <div>
-            <%= link_to "投稿する", new_post_path %>
-          </div>
-          <div>
-            <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
-          </div>
-        <% else %>
-          <div class="p-2 align-self-center btn btn-outline-secondary">
-            <%= link_to "新規登録", new_user_registration_path %>
-          </div>
-          <div class="p-2 align-self-center btn btn-outline-secondary">
-            <%= link_to "ログイン", new_user_session_path %>
-          </div>
+    <header class="border-bottom d-flex bd-highlight">
+      <div class="logo mr-auto col-lg-2">
+        <%= link_to root_path do %>
+          <%= image_tag 'logo.png', size: "150x150" %>
         <% end %>
       </div>
+      <div class="col-lg-3">
+        <h3>東西線CLUB</h3>
+      </div>
+      <div clacc="header_nemu">
+        <% if admin_signed_in? %>
+          <div>
+            <%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class:"link" %>
+          </div>
+          <div>
+            <%= link_to "駅一覧", admin_stations_path, class:"link" %>
+          </div>
+          <div>
+            <%= link_to "ジャンル一覧", admin_genres_path, class:"link" %>
+          </div>
+          <div>
+            <%= link_to "ユーザー一覧", admin_users_path, class:"link" %>
+          </div>
+        <% elsif user_signed_in? %>
+          <div class="btn btn-outline-secondary rounded-pill">
+            <%= link_to "マイページ", users_current_user_path, class:"link" %>
+          </div>
+          <div class="btn btn-outline-secondary rounded-pill">
+            <%= link_to "投稿する", new_post_path, class:"link" %>
+          </div>
+          <div class="btn btn-outline-secondary rounded-pill">
+            <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class:"link" %>
+          </div>
+        <% else %>
+        <div class="jjj">
+          <div class="btn btn-outline-secondary rounded-pill new_user_registration">
+            <%= link_to "新規登録", new_user_registration_path, class:"link" %>
+          </div>
+          <div class="btn btn-outline-secondary rounded-pill">
+            <%= link_to "ログイン", new_user_session_path, class:"link" %>
+          </div>
+        </div>
+        <% end %>
+      </div>
+      <div class="col-lg-2"></div>
     </header>
     <%= yield %>
   </body>

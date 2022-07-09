@@ -19,7 +19,11 @@
     <tbody>
       <% @stations.each do |station| %>
       <tr>
-        <td><%= station.name %></td>
+        <td>
+          <%= link_to admin_station_path(station.id) do %>
+            <%= station.name %>
+          <% end %>
+        </td>
         <td><%= link_to "編集する", edit_admin_station_path(station.id), class:"btn btn-success" %></td>
       </tr>
       <% end %>

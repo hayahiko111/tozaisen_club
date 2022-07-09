@@ -1,6 +1,12 @@
 Rails.application.routes.draw do
 
   namespace :admin do
+    resources :posts, only: [:show, :destroy] do
+      resources :post_comments, only: [:destroy]
+    end
+  end
+
+  namespace :admin do
     resources :users, only: [:index, :show, :edit, :update]
   end
 
@@ -34,7 +40,7 @@ Rails.application.routes.draw do
   end
 
   namespace :admin do
-    resources :stations, except: [:show, :destroy]
+    resources :stations, except: [:new, :destroy]
   end
 
   devise_for :user,skip: [:passwords], controllers: {

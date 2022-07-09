@@ -4,6 +4,11 @@ class Admin::StationsController < ApplicationController
     @stations = Station.all
   end
 
+  def show
+    @station = Station.find(params[:id])
+    @posts = Post.where(station_id: params[:id]).order(id: "DESC")
+  end
+
   def create
     @station = Station.new(station_params)
     @station.save

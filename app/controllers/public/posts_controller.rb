@@ -10,7 +10,7 @@ class Public::PostsController < ApplicationController
     if @post.save
       redirect_to station_path(@post.station_id)
     else
-      redirect_to new_post_path
+      render :new
     end
   end
 

@@ -13,7 +13,7 @@ class ApplicationController < ActionController::Base
     if resource_or_scope == :user
         root_path
     elsif resource_or_scope == :admin
-        admin_stations_path
+        admin_session_path
     else
         root_path
     end

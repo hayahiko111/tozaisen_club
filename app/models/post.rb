@@ -13,4 +13,6 @@ class Post < ApplicationRecord
   def self.word_search(keyword)
     where(["message like?", "%#{keyword}%"])
   end
+
+  validates :message, presence: true, length: { maximum: 200 }
 end
