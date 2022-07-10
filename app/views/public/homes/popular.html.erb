@@ -41,16 +41,16 @@
   </div>
   <div>
     <p class = "notice"><%= notice %></p>
-    <h3>人気投稿</h3>
+    <h3 class="title">人気投稿</h3>
     <% @favorite_top4.each do |favorite| %>
-    <div class="d-flex popular">
+    <div class="d-flex post">
       <div>
         <%= link_to post_path(favorite.id) do %>
           <%= image_tag favorite.image, size: "400x250" %>
         <% end %>
       </div>
-      <div class="popular_contents">
-        <p class="popular_station"><%= "<" + favorite.station.name + "駅>" %></p>
+      <div class="post_contents">
+        <p class="station"><%= "<" + favorite.station.name + "駅>" %></p>
         <%= favorite.genre.name %><br>
         <p class="popular_message"><%= favorite.message %></p>
         <%= favorite.user.name %>

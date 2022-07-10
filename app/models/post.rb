@@ -14,5 +14,6 @@ class Post < ApplicationRecord
     where(["message like?", "%#{keyword}%"])
   end
 
-  validates :message, presence: true, length: { maximum: 200 }
+  validates :message, presence: true, length: { maximum: 176 }
+  validates :image, presence: true
 end

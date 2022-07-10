@@ -1,20 +1,19 @@
-<div class="container">
-  <h2>Log in</h2>
+<div class="container sign_in">
+  <h4>ログイン</h4>
   <%= form_with model: @user, url: user_session_path do |f| %>
-    <div class="field">
-      <%= f.label :email %><br />
-      <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-    </div>
-
-    <div class="field">
-      <%= f.label :password %><br />
-      <%= f.password_field :password, autocomplete: "current-password" %>
-    </div>
-
-    <div class="actions">
-      <%= f.submit "Log in" %>
-    </div>
+  <table class="mx-auto">
+    <tr>
+      <td>email</td>
+      <td><%= f.email_field :email, autofocus: true, autocomplete: "email" %></td>
+    </tr>
+    <tr>
+      <td>password</td>
+      <td><%= f.password_field :password, autocomplete: "current-password" %></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><%= f.submit "Log in" %></td>
+    </tr>
+  </table>
   <% end %>
-
-  <%= render "public/shared/links" %>
 </div>

@@ -1,14 +1,14 @@
 <div class="container d-flex">
   <div class="sidebar col-lg-2">
+    <h5><%= link_to "人気投稿", popular_path, class:"link border-bottom" %></h5>
     <div class="search">
       <%= form_with url: search_path, method: :get do |f| %>
         <%= f.text_field :keyword, value: @keyword, style: "width:160px" %>
-        <%= f.submit "検索", class: "btn btn-primary" %>
+        <%= f.submit "検索", class: "btn btn-info" %>
       <% end %>
     </div>
-    <p><%= link_to "人気投稿", popular_path %></p>
     <div class="dropdown">
-      <button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+      <button type="button" class="btn dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
         ジャンル別
       </button>
       <div class="dropdown-menu">
@@ -39,28 +39,25 @@
       </tbody>
     </table>
   </div>
+
   <div>
     <p class = "notice"><%= notice %></p>
-    <h3><%= "”" + @genre.name + "”" %></h3>
-    <table>
+    <h3 class="title"><%= "”" + @genre.name + "”" %></h3>
     <% @posts.each do |post| %>
-      <tr>
-        <td>
-          <% if post.image.attached? %>
-            <%= link_to post_path(post.id) do %>
-              <%= image_tag post.image, size: "500x300" %>
-            <% end %>
-          <% else %>
-            <%= image_tag 'no_image', size: "200x200" %>
-          <% end %>
-        </td>
-        <td><%= post.station.name %></td>
-        <td><%= post.message %></td>
-        <td><%= post.user.name %></td>
-        <td><%= "♥" + post.favorites.count.to_s %></td>
-        <td><%= "コメント件数：" + post.post_comments.count.to_s %></td>
-      </tr>
+    <div class="d-flex post">
+      <div>
+        <%= link_to post_path(post.id) do %>
+          <%= image_tag post.image, size: "400x250" %>
+        <% end %>
+      </div>
+      <div class="post_contents">
+        <p class="station"><%= "<" + post.station.name + "駅>" %></p>
+        <p class="popular_message"><%= post.message %></p>
+        <%= post.user.name %>
+        <%= "♥" + post.favorites.count.to_s %>
+        <%= "コメント件数：" + post.post_comments.count.to_s %>
+      </div>
+    </div>
     <% end %>
-    </table>
   </div>
 </div>
