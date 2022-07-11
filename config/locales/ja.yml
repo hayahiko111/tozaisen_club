@@ -3,6 +3,8 @@ ja:
   activerecord:
     attributes:
       post:
+        genre: ジャンル
+        station: 駅
         message: メッセージ
         image: 画像
     errors:

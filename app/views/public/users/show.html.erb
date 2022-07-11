@@ -43,7 +43,7 @@
     <p class = "notice"><%= notice %></p>
     <h3 class="title">マイページ</h3>
     <%= link_to "編集する", edit_users_path(@user.id), class:"btn btn-outline-success align-self-center" %>
-    <%= link_to "退会する", users_withdraw_path, method: :patch, class:"btn btn-outline-dark withdraw" ,"data-confirm" => "本当に削除しますか？" %>
+    <%= link_to "退会する", users_withdraw_path, method: :patch, class:"btn btn-outline-dark withdraw", "data-confirm" => "本当に削除しますか？" %>
     <div>
       <table class="table table-bordered" style="width:400px;height:100px">
         <tr>

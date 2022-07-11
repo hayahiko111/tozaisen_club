@@ -43,6 +43,16 @@
     <p class = "notice"><%= notice %></p>
     <h3 class="title">投稿編集</h3>
     <div class="post_contents col-lg-9">
+      <div class="submin_errors">
+      <% if @post.errors.any? %>
+        <%= @post.errors.count %>件のエラーが発生しました
+        <ul>
+          <% @post.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
+      <% end %>
+      </div>
       <div>
         <%= image_tag @post.image, size: "700x500" %>
       </div>

@@ -1,28 +1,77 @@
-<div class="container">
-  <h3>ジャンル一覧・追加</h3>
-  <div class="admin_genre_form">
-  <%= form_with model: @genre, url:admin_genres_path do |f| %>
-    <%= f.label 'ジャンル名', class:"col-lg-2" %>
-    <%= f.text_field :name, class:"col-lg-2" %>
-    <%= f.submit '新規登録', class:"btn btn-success col-lg-1" %>
-  <% end %>
-  </div>
-
-  <table class="table col-lg-4">
-    <thead class="table-active">
-      <tr>
-        <th>ジャンル</th>
-        <th></th>
-      </tr>
-    </thead>
-
-    <tbody>
-      <% @genres.each do |genres| %>
-      <tr>
-        <td><%= genres.name %></td>
-        <td><%= link_to "編集する", edit_admin_genre_path(genres.id), class:"btn btn-success" %></td>
-      </tr>
+<div class="container d-flex">
+  <div class="sidebar col-lg-2">
+    <h5><%= link_to "人気投稿", admin_populars_popular_path, class:"link border-bottom" %></h5>
+    <div class="search">
+      <%= form_with url: admin_word_searchs_word_search_path, method: :get do |f| %>
+        <%= f.text_field :keyword, value: @keyword, style: "width:160px" %>
+        <%= f.submit "検索", class: "btn btn-info" %>
       <% end %>
-    </tbody>
-  </table>
+    </div>
+    <div class="dropdown">
+      <button type="button" class="btn dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        ジャンル別
+      </button>
+      <div class="dropdown-menu">
+        <% @genres.each do |genre| %>
+          <%= link_to admin_genre_path(genre.id) do %>
+            <p class="dropdown-item"><%= genre.name %></p>
+          <% end %>
+        <% end %>
+      </div>
+    </div>
+    <h5>駅一覧・追加</h5>
+    <div class="station_form">
+      <%= form_with model: @station, url:admin_stations_path do |f| %>
+        <%= f.text_field :name, class:"col-lg-10" %><br>
+        <%= f.submit '新規登録', class:"btn-outline-success", "data-confirm" => "本当に削除しますか？" %>
+      <% end %>
+    </div>
+    <table class="table">
+      <tbody>
+        <% @stations.each do |station| %>
+        <tr>
+          <td>
+            <%= link_to admin_station_path(station.id) do %>
+              <p class="station_name"><%= station.name %></p>
+            <% end %>
+          </td>
+          <td>
+            <%= link_to edit_admin_station_path(station.id), class:"btn btn-outline-success" do %>
+              <p class="station_name">edit</p>
+            <% end %>
+          </td>
+        </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+  <div>
+    <p class = "notice guest"><%= notice %></p>
+    <h3 class="title">ジャンル一覧・追加</h3>
+    <div class="admin_genre_form">
+    <%= form_with model: @genre, url:admin_genres_path do |f| %>
+      <%= f.label 'ジャンル名', class:"col-lg-4" %>
+      <%= f.text_field :name, class:"col-lg-4" %>
+      <%= f.submit 'Registration', class:"btn-outline-success col-lg-4" %>
+    <% end %>
+    </div>
+
+    <table class="table col-lg-8">
+      <thead class="table-active">
+        <tr>
+          <th>ジャンル</th>
+          <th></th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <% @genres.each do |genres| %>
+        <tr>
+          <td><%= genres.name %></td>
+          <td><%= link_to "edit", edit_admin_genre_path(genres.id), class:"btn btn-outline-success" %></td>
+        </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
 </div>

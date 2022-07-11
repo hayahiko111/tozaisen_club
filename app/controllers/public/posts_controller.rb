@@ -33,7 +33,7 @@ class Public::PostsController < ApplicationController
     if @post.update(post_params)
       redirect_to users_current_user_path
     else
-      redirect_to edit_post_path(@post.id)
+      render :new
     end
   end
 

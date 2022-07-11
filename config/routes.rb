@@ -1,6 +1,13 @@
 Rails.application.routes.draw do
 
   namespace :admin do
+    get 'populars/popular'
+  end
+  namespace :admin do
+    get 'word_searchs/word_search'
+  end
+
+  namespace :admin do
     resources :posts, only: [:show, :destroy] do
       resources :post_comments, only: [:destroy]
     end
@@ -36,7 +43,7 @@ Rails.application.routes.draw do
   get "search" => "public/homes#word_search"
 
   namespace :admin do
-    resources :genres, only: [:index, :edit, :create, :update]
+    resources :genres, only: [:index, :show, :edit, :create, :update]
   end
 
   namespace :admin do

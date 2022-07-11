@@ -23,7 +23,7 @@
     <div class="station_form">
       <%= form_with model: @station, url:admin_stations_path do |f| %>
         <%= f.text_field :name, class:"col-lg-10" %><br>
-        <%= f.submit '新規登録', class:"btn-outline-success", "data-confirm" => "本当に削除しますか？" %>
+        <%= f.submit '新規登録', class:"btn btn-success" %>
       <% end %>
     </div>
     <table class="table">
@@ -47,33 +47,27 @@
   </div>
   <div>
     <p class = "notice"><%= notice %></p>
-    <div class="d-flex">
-      <p class="station title"><%= "<" +  @post.station.name + "駅>"  %></p>
-      <p class="genre_name"><%= @post.genre.name %></p>
-    </div>
-    <div class="show_post_contents">
+    <% if @keyword == "" %>
+      <h3><%="”" + "”の検索結果" %></h3>
+    <% else %>
+      <h3><%="”" + @keyword + "”の検索結果" %></h3>
+    <% end %>
+    <% @posts.each do |post| %>
+    <div class="d-flex post">
       <div>
-        <%= image_tag @post.image, size: "700x500" %>
-      </div>
-      <%= @post.message %><br>
-      <%= @post.user.name %>
-      <p class="show_favorite">
-        ♥<%= @post.favorites.count %> いいね
-      </p>
-      <%= "コメント件数：" + @post.post_comments.count.to_s %>
-      <div class="float-right">
-        <%= link_to "削除する", post_path(@post.id), method: :delete, data: {confirm: "削除しますか？"}, class:"btn btn-outline-dark destroy_btn" %>
-      </div>
-      <p class="comment">コメント</p>
-      <table>
-        <% @post.post_comments.each do |post_comment| %>
-        <tr>
-          <td class="col-lg-2"><%= post_comment.user.name %></td>
-          <td><%= post_comment.comment %></td>
-          <td><%= link_to "削除する", admin_post_post_comment_path(post_comment.id), method: :delete, class:"btn" %></td>
-        </tr>
+        <%= link_to admin_post_path(post.id) do %>
+          <%= image_tag post.image, size: "400x250" %>
         <% end %>
-      </table>
+      </div>
+      <div class="post_contents">
+        <p class="station"><%= "<" + post.station.name + "駅>" %></p>
+        <%= post.genre.name %><br>
+        <p class="popular_message"><%= post.message %></p>
+        <%= post.user.name %>
+        <%= "♥" + post.favorites.count.to_s %>
+        <%= "コメント件数：" + post.post_comments.count.to_s %>
+      </div>
     </div>
+    <% end %>
   </div>
 </div>

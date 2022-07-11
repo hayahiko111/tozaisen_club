@@ -45,35 +45,25 @@
       </tbody>
     </table>
   </div>
+
   <div>
     <p class = "notice"><%= notice %></p>
-    <div class="d-flex">
-      <p class="station title"><%= "<" +  @post.station.name + "駅>"  %></p>
-      <p class="genre_name"><%= @post.genre.name %></p>
-    </div>
-    <div class="show_post_contents">
+    <h3 class="title"><%= "”" + @genre.name + "”" %></h3>
+    <% @posts.each do |post| %>
+    <div class="d-flex post">
       <div>
-        <%= image_tag @post.image, size: "700x500" %>
-      </div>
-      <%= @post.message %><br>
-      <%= @post.user.name %>
-      <p class="show_favorite">
-        ♥<%= @post.favorites.count %> いいね
-      </p>
-      <%= "コメント件数：" + @post.post_comments.count.to_s %>
-      <div class="float-right">
-        <%= link_to "削除する", post_path(@post.id), method: :delete, data: {confirm: "削除しますか？"}, class:"btn btn-outline-dark destroy_btn" %>
-      </div>
-      <p class="comment">コメント</p>
-      <table>
-        <% @post.post_comments.each do |post_comment| %>
-        <tr>
-          <td class="col-lg-2"><%= post_comment.user.name %></td>
-          <td><%= post_comment.comment %></td>
-          <td><%= link_to "削除する", admin_post_post_comment_path(post_comment.id), method: :delete, class:"btn" %></td>
-        </tr>
+        <%= link_to admin_post_path(post.id) do %>
+          <%= image_tag post.image, size: "400x250" %>
         <% end %>
-      </table>
+      </div>
+      <div class="post_contents">
+        <p class="station"><%= "<" + post.station.name + "駅>" %></p>
+        <p class="popular_message"><%= post.message %></p>
+        <%= post.user.name %>
+        <%= "♥" + post.favorites.count.to_s %>
+        <%= "コメント件数：" + post.post_comments.count.to_s %>
+      </div>
     </div>
+    <% end %>
   </div>
 </div>

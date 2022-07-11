@@ -1,6 +1,8 @@
 class Admin::PostsController < ApplicationController
   def show
     @post = Post.find(params[:id])
+    @stations = Station.all
+    @genres = Genre.all
   end
 
   def destroy

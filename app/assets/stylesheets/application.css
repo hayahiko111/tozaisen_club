@@ -13,7 +13,8 @@
  *= require_tree .
  *= require_self
  */
-*{
+body{
+  font-family: "Hiragino maru Gothic ProN W4", "Hiragino Kaku Gothic Pro","Hiragino Sans", "arial", "Meiryo", "MS PGothic", sans-serif!important;
   margin: 0;
   padding: 0;
   text-decoration: none;
@@ -151,4 +152,18 @@ header h3{
 
 .edit_btn, .destroy_btn{
   margin-right: 10px;
+}
+
+.submin_errors{
+  color: red;
+}
+
+.guest{
+  color: green;
+}
+
+.station_name{
+  font-size: 13px;
+  margin:0;
+  padding:0;
 }
