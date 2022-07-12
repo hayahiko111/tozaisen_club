@@ -1,25 +1,22 @@
-<div class="container d-flex">
-  <div>
-    <h3><%= @station.name + "駅" %></h3>
-    <table>
+<%= render "admin/shared/sidebars", keyword: @keyword, genres: @genres, stations: @stations, station: @station %>
+  <main>
+    <p class = "notice guest"><%= notice %></p>
+    <h3 class="title"><%= @station_show.name + "駅" %></h3>
     <% @posts.each do |post| %>
-      <tr>
-        <td>
-          <% if post.image.attached? %>
-            <%= link_to admin_post_path(post.id) do %>
-              <%= image_tag post.image, size: "500x300" %>
-            <% end %>
-          <% else %>
-            <%= image_tag 'no_image', size: "200x200" %>
-          <% end %>
-          </td>
-        <td><%= post.genre.name %></td>
-        <td><%= post.message %></td>
-        <td><%= post.user.name %></td>
-        <td><%= "♥" + post.favorites.count.to_s %></td>
-        <td><%= "コメント件数：" + post.post_comments.count.to_s %></td>
-      </tr>
+    <div class="d-flex post">
+      <div>
+        <%= link_to admin_post_path(post.id) do %>
+          <%= image_tag post.image, size: "400x250" %>
+        <% end %>
+      </div>
+      <div class="post_contents">
+        <p class="border text-center"><%= post.genre.name %></p>
+        <p class="popular_message"><%= post.message %></p>
+        <%= post.user.name %>
+        <%= "♥" + post.favorites.count.to_s %>
+        <%= "コメント件数：" + post.post_comments.count.to_s %>
+      </div>
+    </div>
     <% end %>
-    </table>
-  </div>
+  </main>
 </div>

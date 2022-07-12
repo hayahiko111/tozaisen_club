@@ -1,6 +1,8 @@
-<div class="container">
-  <h3>ユーザー一覧</h3>
-    <table class="table col-lg-10">
+<%= render "admin/shared/sidebars", keyword: @keyword, genres: @genres, stations: @stations, station: @station %>
+  <main class="col-lg-10">
+    <p class = "notice guest"><%= notice %></p>
+    <h3 class="title">ユーザー一覧</h3>
+    <table class="table">
       <thead class="table-active">
         <tr>
           <th>name</th>
@@ -24,4 +26,5 @@
         <% end %>
       </tbody>
     </table>
+  </main>
 </div>

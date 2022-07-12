@@ -50,14 +50,15 @@ header{
 
 header .new_user_registration{
   margin-right: 20px;
+  height:36px;
 }
 
-.rounded-pill{
-  height: 40px;
+header{
+  padding: 0 100px;
 }
 
-.logo{
-  margin-left: 100px;
+.menu{
+  margin-top: 20px
 }
 
 header h3{
@@ -100,7 +101,7 @@ header h3{
 
 .post_contents{
   margin-left: 30px;
-  width: 400px;
+  width: 450px;
   height:250px;
 }
 
@@ -166,4 +167,8 @@ header h3{
   font-size: 13px;
   margin:0;
   padding:0;
+}
+
+.btn-outline-success{
+  margin-top: 5px;
 }

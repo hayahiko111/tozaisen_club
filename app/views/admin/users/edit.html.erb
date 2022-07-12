@@ -1,5 +1,7 @@
-<div class="container">
-  <h3>会員情報編集</h3>
+<%= render "admin/shared/sidebars", keyword: @keyword, genres: @genres, stations: @stations, station: @station %>
+  <main>
+    <p class = "notice guest"><%= notice %></p>
+    <h3 class="title">会員情報編集</h3>
     <%= form_with model: @user, url: admin_user_path, method: :patch do |f| %>
     <table>
       <tr>
@@ -25,4 +27,5 @@
       </tr>
     </table>
     <% end %>
+  </main>
 </div>

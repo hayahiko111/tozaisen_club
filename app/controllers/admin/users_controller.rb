@@ -1,14 +1,20 @@
 class Admin::UsersController < ApplicationController
   def index
     @users = User.all
+    @stations = Station.all
+    @genres = Genre.all
   end
 
   def show
     @user = User.find(params[:id])
+    @stations = Station.all
+    @genres = Genre.all
   end
 
   def edit
     @user = User.find(params[:id])
+    @stations = Station.all
+    @genres = Genre.all
   end
 
   def update

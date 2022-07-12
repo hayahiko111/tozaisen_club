@@ -1,8 +1,10 @@
-<div class="container admin_station_edit">
- <h3>駅名編集</h3>
- <%= form_with model: @station, url:admin_station_path(@station.id), method: :patch do |f| %>
-  <%= f.label '駅名', class:"col-lg-2" %>
-  <%= f.text_field :name, class:"col-lg-2" %>
-  <%= f.submit '変更を保存', class:"btn btn-success"  %>
- <% end %>
+<%= render "admin/shared/sidebars", keyword: @keyword, genres: @genres, stations: @stations, station: @station %>
+  <main>
+    <p class = "notice guest"><%= notice %></p>
+    <h3 class="title">駅名編集</h3>
+    <%= form_with model: @station_show, url:admin_station_path(@station_show.id), method: :patch do |f| %>
+    <%= f.label '駅名', class:"col-lg-2" %>
+    <%= f.text_field :name, class:"col-lg-2" %>
+    <%= f.submit '変更を保存', class:"btn btn-success"  %>
+    <% end %>
 </div>

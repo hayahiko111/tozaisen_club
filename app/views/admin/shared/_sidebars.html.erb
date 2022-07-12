@@ -3,7 +3,7 @@
     <h5><%= link_to "人気投稿", admin_populars_popular_path, class:"link border-bottom" %></h5>
     <div class="search">
       <%= form_with url: admin_word_searchs_word_search_path, method: :get do |f| %>
-        <%= f.text_field :keyword, value: @keyword, style: "width:160px" %>
+        <%= f.text_field :keyword, value: keyword, style: "width:160px" %>
         <%= f.submit "検索", class: "btn btn-info" %>
       <% end %>
     </div>
@@ -12,7 +12,7 @@
         ジャンル別
       </button>
       <div class="dropdown-menu">
-        <% @genres.each do |genre| %>
+        <% genres.each do |genre| %>
           <%= link_to admin_genre_path(genre.id) do %>
             <p class="dropdown-item"><%= genre.name %></p>
           <% end %>
@@ -21,14 +21,14 @@
     </div>
     <h5>駅一覧・追加</h5>
     <div class="station_form">
-      <%= form_with model: @station, url:admin_stations_path do |f| %>
+      <%= form_with model: station, url:admin_stations_path do |f| %>
         <%= f.text_field :name, class:"col-lg-10" %><br>
-        <%= f.submit '新規登録', class:"btn btn-success" %>
+        <%= f.submit '新規登録', class:"btn-outline-success", "data-confirm" => "本当に削除しますか？" %>
       <% end %>
     </div>
     <table class="table">
       <tbody>
-        <% @stations.each do |station| %>
+        <% stations.each do |station| %>
         <tr>
           <td>
             <%= link_to admin_station_path(station.id) do %>
@@ -45,4 +45,3 @@
       </tbody>
     </table>
   </div>
-</div>

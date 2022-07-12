@@ -1,46 +1,6 @@
-<div class="container d-flex">
-  <div class="sidebar col-lg-2">
-    <h5><%= link_to "人気投稿", popular_path, class:"link border-bottom" %></h5>
-    <div class="search">
-      <%= form_with url: search_path, method: :get do |f| %>
-        <%= f.text_field :keyword, value: @keyword, style: "width:160px" %>
-        <%= f.submit "検索", class: "btn btn-info" %>
-      <% end %>
-    </div>
-    <div class="dropdown">
-      <button type="button" class="btn dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-        ジャンル別
-      </button>
-      <div class="dropdown-menu">
-        <% @genres.each do |genre| %>
-          <%= link_to genre_path(genre.id) do %>
-            <p class="dropdown-item"><%= genre.name %></p>
-          <% end %>
-        <% end %>
-      </div>
-    </div>
-    <h4>駅一覧</h4>
-    <table class="table">
-      <thead class="table-active">
-        <tr>
-          <th>駅</th>
-        </tr>
-      </thead>
-      <tbody>
-        <% @stations.each do |station| %>
-        <tr>
-          <td>
-            <%= link_to station_path(station.id) do %>
-              <%= station.name %>
-            <% end %>
-          </td>
-        </tr>
-        <% end %>
-      </tbody>
-    </table>
-  </div>
+<%= render "public/shared/sidebars", keyword: @keyword, genres: @genres, stations: @stations %>
 
-  <div>
+  <main>
     <p class = "notice"><%= notice %></p>
     <h3 class="title"><%= "”" + @genre.name + "”" %></h3>
     <% @posts.each do |post| %>
@@ -59,5 +19,5 @@
       </div>
     </div>
     <% end %>
-  </div>
+  </main>
 </div>

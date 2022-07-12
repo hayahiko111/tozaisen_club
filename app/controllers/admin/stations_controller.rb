@@ -1,12 +1,7 @@
 class Admin::StationsController < ApplicationController
-  def index
-    @station = Station.new
-    @stations = Station.all
-    @genres = Genre.all
-  end
-
   def show
-    @station = Station.find(params[:id])
+    @station = Station.new
+    @station_show = Station.find(params[:id])
     @posts = Post.where(station_id: params[:id]).order(id: "DESC")
     @stations = Station.all
     @genres = Genre.all
@@ -21,7 +16,8 @@ class Admin::StationsController < ApplicationController
   end
 
   def edit
-    @station = Station.find(params[:id])
+    @station = Station.new
+    @station_show = Station.find(params[:id])
     @stations = Station.all
     @genres = Genre.all
   end

@@ -47,7 +47,7 @@ Rails.application.routes.draw do
   end
 
   namespace :admin do
-    resources :stations, except: [:new, :destroy]
+    resources :stations, except: [:new, :index, :destroy]
   end
 
   devise_for :user,skip: [:passwords], controllers: {
