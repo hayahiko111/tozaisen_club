@@ -1,4 +1,5 @@
 class Admin::StationsController < ApplicationController
+  before_action :authenticate_admin!
   def show
     @station = Station.new
     @station_show = Station.find(params[:id])

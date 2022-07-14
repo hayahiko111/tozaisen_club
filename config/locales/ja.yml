@@ -1,5 +1,12 @@
 ---
 ja:
+  views:
+    pagination:
+      first: "&laquo; 最初"
+      last: "Last &raquo;"
+      previous: "&lsaquo; Back"
+      next: "Next &rsaquo;"
+      truncate: "..."
   activerecord:
     attributes:
       post:

@@ -1,4 +1,5 @@
 class Admin::WordSearchsController < ApplicationController
+  before_action :authenticate_admin!
   def word_search
     if params[:keyword] == ""
       @keyword = params[:keyword]

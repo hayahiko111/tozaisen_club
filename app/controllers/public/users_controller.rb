@@ -1,4 +1,5 @@
 class Public::UsersController < ApplicationController
+  before_action :authenticate_user!
   before_action :ensure_normal_user, only: %i[edit update withdraw]
 
   def ensure_normal_user
@@ -10,7 +11,7 @@ class Public::UsersController < ApplicationController
 
   def show
     @user = current_user
-    @my_posts = Post.where(user_id: current_user.id).order(id: "DESC")
+    @my_posts = Post.where(user_id: current_user.id).order(id: "DESC").page(params[:page])
     @stations = Station.all
     @genres = Genre.all
   end

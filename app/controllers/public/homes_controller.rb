@@ -1,4 +1,5 @@
 class Public::HomesController < ApplicationController
+  before_action :authenticate_user!
   def top
   end
 
@@ -13,7 +14,7 @@ class Public::HomesController < ApplicationController
       @keyword = params[:keyword]
       redirect_back fallback_location: root_path, notice: "※入力がありません"
     else
-      @posts = Post.word_search(params[:keyword])
+      @posts = Post.word_search(params[:keyword]).page(params[:page])
       @keyword = params[:keyword]
       @stations = Station.all
       @genres = Genre.all
