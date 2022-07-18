@@ -22,7 +22,7 @@ class Admin::StationsController < ApplicationController
   def update
     @station = Station.find(params[:id])
     @station.update(station_params)
-    redirect_to admin_stations_path
+    redirect_to admin_station_path(params[:id])
   end
 
   private

@@ -4,7 +4,7 @@
     <h3 class="title">駅名編集</h3>
     <%= form_with model: @station_show, url:admin_station_path(@station_show.id), method: :patch do |f| %>
     <%= f.label '駅名', class:"col-lg-2" %>
-    <%= f.text_field :name, class:"col-lg-2" %>
+    <%= f.text_field :name, class:"col-lg-3" %>
     <%= f.submit '変更を保存', class:"btn btn-success"  %>
     <% end %>
 </div>
