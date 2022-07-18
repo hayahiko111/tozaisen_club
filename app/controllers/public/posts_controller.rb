@@ -32,7 +32,7 @@ class Public::PostsController < ApplicationController
   def update
     @post = Post.find(params[:id])
     if @post.update(post_params)
-      redirect_to users_current_user_path
+      redirect_to post_path(@post.id)
     else
       render :new
     end

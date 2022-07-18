@@ -36,7 +36,7 @@ li{
 .top_image{
   width: 70%;
   height:530px;
-  background-image: url(MARIIMG_0232_TP_V4);
+  background-image: image-url(MARIIMG_0232_TP_V4);
 }
 
 .top_message{
@@ -188,4 +188,8 @@ nav {
 .pagination li {
     margin: 0 1px;
     list-style: none;
+}
+
+ul{
+  margin-right: 100px;
 }

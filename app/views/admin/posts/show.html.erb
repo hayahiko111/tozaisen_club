@@ -24,7 +24,7 @@
         <tr>
           <td class="col-lg-2"><%= post_comment.user.name %></td>
           <td><%= post_comment.comment %></td>
-          <td><%= link_to "削除する", admin_post_post_comment_path(post_comment.id), method: :delete, class:"btn" %></td>
+          <td><%= link_to "削除する", admin_post_post_comment_path(post_comment.id), method: :delete, data: {confirm: "削除しますか？"}, class:"btn" %></td>
         </tr>
         <% end %>
       </table>

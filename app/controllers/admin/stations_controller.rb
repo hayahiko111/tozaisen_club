@@ -13,7 +13,7 @@ class Admin::StationsController < ApplicationController
     @station.save
     @stations = Station.all
     @genres = Genre.all
-    redirect_to admin_stations_path
+    redirect_back fallback_location: admin_populars_popular_path
   end
 
   def edit
