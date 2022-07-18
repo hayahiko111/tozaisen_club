@@ -1,7 +1,6 @@
 class Admin::StationsController < ApplicationController
   before_action :authenticate_admin!
   def show
-    @station = Station.new
     @station_show = Station.find(params[:id])
     @posts = Post.where(station_id: params[:id]).order(id: "DESC")
     @stations = Station.all
@@ -11,13 +10,10 @@ class Admin::StationsController < ApplicationController
   def create
     @station = Station.new(station_params)
     @station.save
-    @stations = Station.all
-    @genres = Genre.all
     redirect_back fallback_location: admin_populars_popular_path
   end
 
   def edit
-    @station = Station.new
     @station_show = Station.find(params[:id])
     @stations = Station.all
     @genres = Genre.all
@@ -31,6 +27,6 @@ class Admin::StationsController < ApplicationController
 
   private
   def station_params
-    params.require(:station).permit(:name)
+    params.permit(:name)
   end
 end
