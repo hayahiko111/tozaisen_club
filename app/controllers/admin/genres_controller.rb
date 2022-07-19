@@ -9,6 +9,7 @@ class Admin::GenresController < ApplicationController
   def show
     @stations = Station.all
     @genres = Genre.all
+    @station = Station.new
     @genre = Genre.find(params[:id])
     @posts = Post.where(genre_id: params[:id]).order("id DESC")
     if Post.where(genre_id: params[:id]).empty?

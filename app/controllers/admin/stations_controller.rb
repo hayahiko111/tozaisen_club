@@ -5,6 +5,7 @@ class Admin::StationsController < ApplicationController
     @posts = Post.where(station_id: params[:id]).order(id: "DESC")
     @stations = Station.all
     @genres = Genre.all
+    @station = Station.new
   end
 
   def create
@@ -17,6 +18,7 @@ class Admin::StationsController < ApplicationController
     @station_show = Station.find(params[:id])
     @stations = Station.all
     @genres = Genre.all
+    @station = Station.new
   end
 
   def update

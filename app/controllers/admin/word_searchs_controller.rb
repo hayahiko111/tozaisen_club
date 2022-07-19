@@ -9,6 +9,7 @@ class Admin::WordSearchsController < ApplicationController
       @keyword = params[:keyword]
       @stations = Station.all
       @genres = Genre.all
+      @station = Station.new
     end
   end
 end

@@ -4,18 +4,21 @@ class Admin::UsersController < ApplicationController
     @users = User.all
     @stations = Station.all
     @genres = Genre.all
+    @station = Station.new
   end
 
   def show
     @user = User.find(params[:id])
     @stations = Station.all
     @genres = Genre.all
+    @station = Station.new
   end
 
   def edit
     @user = User.find(params[:id])
     @stations = Station.all
     @genres = Genre.all
+    @station = Station.new
   end
 
   def update

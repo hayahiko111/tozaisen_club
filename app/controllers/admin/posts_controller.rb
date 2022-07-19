@@ -4,6 +4,7 @@ class Admin::PostsController < ApplicationController
     @post = Post.find(params[:id])
     @stations = Station.all
     @genres = Genre.all
+    @station = Station.new
   end
 
   def destroy
