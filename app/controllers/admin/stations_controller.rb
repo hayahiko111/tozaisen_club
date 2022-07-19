@@ -27,6 +27,6 @@ class Admin::StationsController < ApplicationController
 
   private
   def station_params
-    params.permit(:name)
+    params.require(:station).permit(:name)
   end
 end
