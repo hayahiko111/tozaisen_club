@@ -11,6 +11,8 @@ class Public::PostsController < ApplicationController
     if @post.save
       redirect_to station_path(@post.station_id)
     else
+      @genres = Genre.all
+      @stations = Station.all
       render :new
     end
   end
@@ -34,6 +36,8 @@ class Public::PostsController < ApplicationController
     if @post.update(post_params)
       redirect_to post_path(@post.id)
     else
+      @genres = Genre.all
+      @stations = Station.all
       render :new
     end
   end
